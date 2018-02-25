@@ -17,7 +17,10 @@
 		F8035F94203D014000D3D73A /* Instagram_01Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8035F93203D014000D3D73A /* Instagram_01Tests.swift */; };
 		F8035F9F203D014000D3D73A /* Instagram_01UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8035F9E203D014000D3D73A /* Instagram_01UITests.swift */; };
 		F8035FAD203D03CF00D3D73A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8035FAC203D03CF00D3D73A /* LoginViewController.swift */; };
+		F8958CE120432087005021BD /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8958CE020432087005021BD /* Post.swift */; };
+		F8958CE420432FD5005021BD /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8958CE320432FD5005021BD /* PostCell.swift */; };
 		F8BDAA66203FBEE200331C87 /* InstagramHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BDAA65203FBEE200331C87 /* InstagramHomeViewController.swift */; };
+		F8EC997A2040FBD20046B637 /* PhotoMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EC99792040FBD20046B637 /* PhotoMapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +63,10 @@
 		F8035F9E203D014000D3D73A /* Instagram_01UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instagram_01UITests.swift; sourceTree = "<group>"; };
 		F8035FA0203D014000D3D73A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F8035FAC203D03CF00D3D73A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F8958CE020432087005021BD /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		F8958CE320432FD5005021BD /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		F8BDAA65203FBEE200331C87 /* InstagramHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramHomeViewController.swift; sourceTree = "<group>"; };
+		F8EC99792040FBD20046B637 /* PhotoMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoMapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +145,8 @@
 		F8035F7D203D014000D3D73A /* Instagram-01 */ = {
 			isa = PBXGroup;
 			children = (
+				F8958CE220432FB1005021BD /* views */,
+				F8958CDF20431FB5005021BD /* models */,
 				F8BDAA67203FBEE600331C87 /* view controller */,
 				F8035F7E203D014000D3D73A /* AppDelegate.swift */,
 				F8035F82203D014000D3D73A /* Main.storyboard */,
@@ -167,11 +175,28 @@
 			path = "Instagram-01UITests";
 			sourceTree = "<group>";
 		};
+		F8958CDF20431FB5005021BD /* models */ = {
+			isa = PBXGroup;
+			children = (
+				F8958CE020432087005021BD /* Post.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		F8958CE220432FB1005021BD /* views */ = {
+			isa = PBXGroup;
+			children = (
+				F8958CE320432FD5005021BD /* PostCell.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
 		F8BDAA67203FBEE600331C87 /* view controller */ = {
 			isa = PBXGroup;
 			children = (
 				F8035FAC203D03CF00D3D73A /* LoginViewController.swift */,
 				F8BDAA65203FBEE200331C87 /* InstagramHomeViewController.swift */,
+				F8EC99792040FBD20046B637 /* PhotoMapViewController.swift */,
 			);
 			path = "view controller";
 			sourceTree = "<group>";
@@ -384,11 +409,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Instagram-01/Pods-Instagram-01-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
+				"${BUILT_PRODUCTS_DIR}/ParseUI/ParseUI.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ParseUI.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -473,7 +500,10 @@
 			files = (
 				F8035FAD203D03CF00D3D73A /* LoginViewController.swift in Sources */,
 				F8035F7F203D014000D3D73A /* AppDelegate.swift in Sources */,
+				F8EC997A2040FBD20046B637 /* PhotoMapViewController.swift in Sources */,
 				F8BDAA66203FBEE200331C87 /* InstagramHomeViewController.swift in Sources */,
+				F8958CE120432087005021BD /* Post.swift in Sources */,
+				F8958CE420432FD5005021BD /* PostCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
