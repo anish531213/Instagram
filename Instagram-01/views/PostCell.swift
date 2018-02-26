@@ -13,14 +13,26 @@ class PostCell: UITableViewCell {
 
     @IBOutlet weak var postImageView: PFImageView!
     @IBOutlet weak var postCationLabel: UILabel!
+    @IBOutlet weak var timeStampLabel: UILabel!
     
     var post: Post! {
         didSet {
             self.postCationLabel.text = post.caption
             self.postImageView.file = post.media as PFFile
             self.postImageView.loadInBackground()
+            self.timeStampLabel.text = convertDateToTimeStamp()
         }
     }
+    
+    func convertDateToTimeStamp() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "ET")
+        dateFormatter.dateFormat = "MMM dd, HH:mm"
+        let strDate = dateFormatter.string(from: post.createdAt!)
+        //print(strDate)
+        return strDate
+    }
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()

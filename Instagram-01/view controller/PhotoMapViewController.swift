@@ -8,8 +8,11 @@
 
 import UIKit
 import Parse
+import MBProgressHUD
 
 class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
+    
+    var window: UIWindow?
     
     @IBOutlet weak var postImageView: UIImageView!    
     @IBOutlet weak var captionField: UITextField!
@@ -52,10 +55,14 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBAction func postNewImage(_ sender: Any) {
         print ("presentImagePickerController")
         presentImagePickerController()
+        
     }
     
     @IBAction func cancelPost(_ sender: Any) {
         clearView()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        // view controller currently being set in Storyboard as default will be overridden
+        window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "AuthenticatedViewController")
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -74,9 +81,12 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
     }
 
     @IBAction func postImageToParse(_ sender: Any) {
+       
         if postImage == nil {
             presentAlert(msg: "Image Not Selected", description: "Sorry, you need to select an image to Post to Instagram")
+            
         } else {
+            MBProgressHUD.showAdded(to: self.view, animated: true)
             //post image to parse
             print("post Image to parse")
 //            let post_image = postImage
@@ -86,8 +96,11 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
                 } else {
                     print("error while posting image")
                 }
+                MBProgressHUD.hide(for: self.view, animated: true)
+                self.clearView()
+                
             })
-            clearView()
+           
         }
     }
     

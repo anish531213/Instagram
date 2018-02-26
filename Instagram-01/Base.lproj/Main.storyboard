@@ -33,7 +33,7 @@
                                 <color key="backgroundColor" white="0.97837999131944442" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Instagram_logo_black" translatesAutoresizingMaskIntoConstraints="NO" id="Grz-1s-Ao2">
                                 <rect key="frame" x="122" y="108" width="158" height="50"/>
@@ -86,43 +86,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qgA-Gy-8q6">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qgA-Gy-8q6">
                                 <rect key="frame" x="0.0" y="64" width="414" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="374" id="Wp2-bv-DYv" customClass="PostCell" customModule="Instagram_01" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="374"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="439" id="Wp2-bv-DYv" customClass="PostCell" customModule="Instagram_01" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="439"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Wp2-bv-DYv" id="NMX-sN-G3g">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="373.66666666666669"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="438.66666666666669"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DPc-Hf-XKx" customClass="PFImageView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="331.33333333333331"/>
+                                                    <rect key="frame" x="0.0" y="37" width="414" height="331.33333333333331"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="DPc-Hf-XKx" secondAttribute="height" multiplier="5:4" id="FTI-Z1-VsK"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Caption" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uoN-V4-s14">
-                                                    <rect key="frame" x="8" y="339.33333333333331" width="64" height="24.666666666666686"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <rect key="frame" x="8" y="377" width="59" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                     <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timestamp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uwy-aX-ln8">
+                                                    <rect key="frame" x="8" y="406" width="86" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="0.568115234375" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="uoN-V4-s14" secondAttribute="bottom" constant="9.6699999999999999" id="7RV-Cc-sZv"/>
+                                                <constraint firstItem="Uwy-aX-ln8" firstAttribute="top" secondItem="uoN-V4-s14" secondAttribute="bottom" constant="8" id="72b-OV-C9T"/>
                                                 <constraint firstAttribute="trailing" secondItem="DPc-Hf-XKx" secondAttribute="trailing" id="9Fp-Ab-JIO"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Uwy-aX-ln8" secondAttribute="bottom" constant="8" id="Ca5-y7-TEv"/>
                                                 <constraint firstItem="uoN-V4-s14" firstAttribute="top" secondItem="DPc-Hf-XKx" secondAttribute="bottom" constant="8" id="D5K-Iy-ADy"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uoN-V4-s14" secondAttribute="trailing" constant="8" id="FK4-nK-Dnd"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Uwy-aX-ln8" secondAttribute="trailing" constant="8" id="IL1-En-x6a"/>
                                                 <constraint firstItem="DPc-Hf-XKx" firstAttribute="leading" secondItem="NMX-sN-G3g" secondAttribute="leading" id="fsh-r9-qYO"/>
                                                 <constraint firstItem="uoN-V4-s14" firstAttribute="leading" secondItem="NMX-sN-G3g" secondAttribute="leading" constant="8" id="i9M-Up-rJC"/>
-                                                <constraint firstItem="DPc-Hf-XKx" firstAttribute="top" secondItem="NMX-sN-G3g" secondAttribute="top" id="rTK-iK-irD"/>
+                                                <constraint firstItem="DPc-Hf-XKx" firstAttribute="top" secondItem="NMX-sN-G3g" secondAttribute="top" constant="37" id="lJk-tB-tbV"/>
+                                                <constraint firstItem="Uwy-aX-ln8" firstAttribute="top" secondItem="uoN-V4-s14" secondAttribute="bottom" constant="8" id="xQG-Bq-ZJ3"/>
+                                                <constraint firstItem="Uwy-aX-ln8" firstAttribute="leading" secondItem="NMX-sN-G3g" secondAttribute="leading" constant="8" id="zbJ-Mw-qGW"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="postCationLabel" destination="uoN-V4-s14" id="EsB-Oh-NcB"/>
                                             <outlet property="postImageView" destination="DPc-Hf-XKx" id="06l-tm-Ypu"/>
+                                            <outlet property="timeStampLabel" destination="Uwy-aX-ln8" id="gh1-NU-Vnn"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

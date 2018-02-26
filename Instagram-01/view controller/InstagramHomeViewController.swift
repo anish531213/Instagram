@@ -26,6 +26,11 @@ class InstagramHomeViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 400
         
+        // Magic code to fix headers
+        let dummyViewHeight = CGFloat(40)
+        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.size.width, height: dummyViewHeight))
+        tableView.contentInset = UIEdgeInsetsMake(-dummyViewHeight, 0, 0, 0)
+        
         refreshControl.addTarget(self, action: #selector(self.refreshPostsAction(_:)), for: UIControlEvents.valueChanged)
         // add refresh control to table view
         tableView.insertSubview(refreshControl, at: 0)
@@ -69,15 +74,75 @@ class InstagramHomeViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print (insta_posts.count)
+        //print (insta_posts.count)
+        return 1
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return insta_posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
-        cell.post = self.insta_posts[indexPath.row]
+        cell.post = self.insta_posts[indexPath.section]
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 80))
+        headerView.backgroundColor = UIColor(white: 1, alpha: 0.9)
+  
+        let profileView = UIImageView(frame: CGRect(x: 15, y: 10, width: 50, height: 50))
+        profileView.clipsToBounds = true
+        profileView.layer.cornerRadius = 25;
+        profileView.layer.borderColor = UIColor(white: 0.7, alpha: 0.8).cgColor
+        profileView.layer.borderWidth = 1;
+        profileView.image = UIImage(named: "avatar")
+        
+        // Set the avatar
+        
+        headerView.addSubview(profileView)
+
+        let profileNameView = UILabel(frame: CGRect(x: 75, y: 25, width:200, height:20))
+        profileNameView.adjustsFontSizeToFitWidth = true
+        profileNameView.font = UIFont(name:"HelveticaNeue-Bold", size: 16.0)
+        
+        let post = insta_posts[section]
+        
+        //var query = PFQuery()
+        //var userAgain = query.getObjectWithId(user.objectId) as PFUser
+        
+        let query = PFUser.query()
+        
+        do {
+            let user = try query?.getObjectWithId(post.author.objectId!)
+            profileNameView.text = user?.object(forKey: "username") as? String
+        } catch {
+            print(error)
+        }
+       
+        
+        headerView.addSubview(profileNameView)
+        
+        /* Publish Dates
+        let publishDateView = UILabel(frame: CGRect(x: 200, y: 30, width:200, height:20))
+        publishDateView.adjustsFontSizeToFitWidth = true
+        
+         
+        //let date = Date(timeIntervalSince1970: post.createdAt as! TimeInterval)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "ET")
+        dateFormatter.dateFormat = "MMM dd, HH:mm"
+        let strDate = dateFormatter.string(from: post.createdAt!)
+        
+        publishDateView.text = strDate
+        
+        headerView.addSubview(publishDateView)
+        */
+        
+        return headerView
     }
     
     /*
